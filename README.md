@@ -1,7 +1,7 @@
 # VikingStorm
 The Employee Salary dataset for Norfolk is from https://data.norfolk.gov/Government/Employee-Salaries/4fsk-z8s8/data.
 
-The Employee Salary for Portsmouth is .
+The Employee Salary for Portsmouth is unavailable currently.
 
 The 'igs_merged_c.csv' dataset is from https://inclusivegrowthscore.com/ and curated from all census tracts for Norfolk and Portsmouth County, VA. 
 
