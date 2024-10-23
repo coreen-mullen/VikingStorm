@@ -5,7 +5,7 @@
 2. [Data and Preprocessing](#data-and-preprocessing)
     - [Data Sources](#data-sources)
     - [Data Description](#data-description)
-3. [Code]
+3. [Code](#code)
 4. [Resources](#resources)
 
 ---
@@ -38,6 +38,10 @@ Employee Salary data is used for our income comparisons, this data is only avail
 ---
 ## Code
 The code for this project comes in the form of a linear regression code, a k-means clustering algorithm ( in code_new.py ), and a Random Forest Regression (in code_testing.py).
+
+The "affordability_score" used in the clustering and random forest regression were calculated from this formula 
+![image](https://github.com/user-attachments/assets/302fe64f-ef3b-4328-ad65-a5f70cb0ba0f)
+
 
 ---
 ## Resources
