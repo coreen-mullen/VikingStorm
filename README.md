@@ -35,5 +35,10 @@ The IGS dataset is filtered for Norfolk and Portsmouth Countys only at the Urban
 The Affordability Score dataset was filtered down to include data on both citys seperately.
 Employee Salary data is used for our income comparisons, this data is only available for Norfolk currently.
 
+---
+## Code
+The code for this project comes in the form of a linear regression code, a k-means clustering algorithm ( in code_new.py ), and a Random Forest Regression (in code_testing.py).
+
+---
 ## Resources
 - [Paper for Research](https://archive.cdc.gov/#/details?url=https://www.cdc.gov/hrqol/pdfs/mhd.pdf )
