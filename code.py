@@ -51,6 +51,7 @@ df_health = df_health[['STATE', 'Data_Value']]
 df_n_1 = df_n_1[['STATE','affordability_score']]
 df_s_1 = df_s_1[['STATE','affordability_score']]
 
+
 # merge the data and clean missing values
 df = pd.merge(df_n_1, df_s_1, on='STATE', how='inner')
 

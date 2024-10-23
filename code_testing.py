@@ -91,24 +91,45 @@ features_combined['cluster'] = kmeans.fit_predict(X_scaled)
 #inspect the clusters
 print(features_combined)
 #plot graphs
+from sklearn.metrics import mean_squared_error
+from math import sqrt
 
-X = features_combined[['affordability_score', 'cluster']]
+# Function to calculate RMSE
+def calculate_rmse(y_true, y_pred):
+    return sqrt(mean_squared_error(y_true, y_pred))
+
+# Prepare your features and target variable
+features_combined = features_combined.fillna(features_combined.mean())  # Fill NaNs
 y = features_combined['Data_Value']
 
-# Split the data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Model using only affordability_score
+X_affordability = features_combined[['affordability_score']]
+X_train_a, X_test_a, y_train_a, y_test_a = train_test_split(X_affordability, y, test_size=0.2, random_state=42)
 
-# Fit the model
-rf_model = RandomForestRegressor(random_state=42)
-rf_model.fit(X_train, y_train)
+rf_model_a = RandomForestRegressor(random_state=42)
+rf_model_a.fit(X_train_a, y_train_a)
+y_pred_a = rf_model_a.predict(X_test_a)
+rmse_a = calculate_rmse(y_test_a, y_pred_a)
 
-# Make predictions
-y_pred = rf_model.predict(X_test)
+# Model using only Base Salary
+X_salary = features_combined[['Base Salary']]
+X_train_s, X_test_s, y_train_s, y_test_s = train_test_split(X_salary, y, test_size=0.2, random_state=42)
 
-# Calculate the Mean Squared Error
-mse = mean_squared_error(y_test, y_pred)
-print(f'Mean Squared Error: {mse}')
+rf_model_s = RandomForestRegressor(random_state=42)
+rf_model_s.fit(X_train_s, y_train_s)
+y_pred_s = rf_model_s.predict(X_test_s)
+rmse_s = calculate_rmse(y_test_s, y_pred_s)
 
-# Feature importance
-importance = rf_model.feature_importances_
-print(f'Feature Importances: {importance}')
+# Model using both features
+X_both = features_combined[['affordability_score', 'Base Salary']]
+X_train_b, X_test_b, y_train_b, y_test_b = train_test_split(X_both, y, test_size=0.2, random_state=42)
+
+rf_model_b = RandomForestRegressor(random_state=42)
+rf_model_b.fit(X_train_b, y_train_b)
+y_pred_b = rf_model_b.predict(X_test_b)
+rmse_b = calculate_rmse(y_test_b, y_pred_b)
+
+# Print the RMSE values for comparison
+print(f'RMSE using affordability_score: {rmse_a}')
+print(f'RMSE using Base Salary: {rmse_s}')
+print(f'RMSE using both features: {rmse_b}')
